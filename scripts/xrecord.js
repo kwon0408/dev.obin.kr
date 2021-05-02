@@ -10,29 +10,36 @@ var vm = parseInt(points[1].textContent);
 function calc(lm, vm)
 {
     if (lm == 0 && vm == 0) // not started
-    {
         return "Not started!"
-    }
-    else if (lm == 200 && vm == 200) // done
+
+    if (lm == 200)
+        var lm_done = true;   
+
+    if (vm == 200)
+        var vm_done = true;
+
+    if (lm_done && vm_done)
+        return "Already Completed!"
+    else
     {
-        return "Already Done!"
+        if (lm > vm) // use VM to determine play counts
+        {
+            let result = calc2(lm, vm);
+            if (result == -99)
+                return "Invalid LM/VM values!";
+            
+            return `${lm} LM, ${vm} VM\nPlay count: IIDX ${result[0]}, SDVX ${result[1]}`
+        }
+        else // use LM to determine play counts
+        {
+            let result = calc2(lm, vm);
+            if (result == -99)
+                return "Invalid LM/VM values!";
+            
+            return `${lm} LM, ${vm} VM\nPlay count: IIDX ${result[1]}, SDVX ${result[0]}`
+        }
     }
-    else if (lm < vm) // use LM
-    {
-        let result = calc2(lm, vm);
-        if (result == -99)
-            return "Invalid LM/VM values!";
-        
-        return `${lm} LM, ${vm} VM\nPlay count: IIDX ${result[0]}, SDVX ${result[1]}`
-    }
-    else // use VM
-    {
-        let result = calc2(lm, vm);
-        if (result == -99)
-            return "Invalid LM/VM values!";
-        
-        return `${lm} LM, ${vm} VM\nPlay count: IIDX ${result[1]}, SDVX ${result[0]}`
-    }
+
 }
 
 function calc2(small, big)
