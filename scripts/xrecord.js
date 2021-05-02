@@ -1,6 +1,14 @@
 /**
  * Play counter for X-record
  * created by dev@obin.kr at 2021-05-03
+ * 
+ * Usage: 
+ * 1. Go to X-record page at https://p.eagate.573.jp/game/bemani/x_record/
+ * 2. Input a single letter "j" (without the outermost quotes) in the address bar
+ *    (Don't press Enter yet)
+ * 3. Copy this text: "avascript:$.getScript('https://dev.obin.kr/scripts/xrecord.js');"
+ *    (without the outermost quotes) 
+ * 4. Paste this into the address bar and press Enter
  */
 
 var points = document.getElementsByClassName("inner")[6].getElementsByTagName("strong");
