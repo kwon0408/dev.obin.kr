@@ -55,7 +55,7 @@ function calc(lm, vm)
 function calc2(small, big)
 {
     console.log(`calc2(${small}, ${big})`)
-    for (play_s = Math.trunc(small / 10), play_b = small % 10; play_s >= 0; --play_b)
+    for (play_s = Math.trunc(small / 10), play_b = small % 10; play_b >= 0; --play_b, play_s += 10)
         {
             // recalculate big
             let big2 = play_b * 10 + play_s;
