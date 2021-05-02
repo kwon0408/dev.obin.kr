@@ -27,7 +27,7 @@ function calc(lm, vm)
         else // LM done, VM not done
         {
             let vm2 = 200 - vm;
-            return `${lm} LM, ${vm} VM\nPlay SDVX Valkyrie ${vm2} more time(s)\n or IIDX Lightning ${Math.trunc(vm2 / 10) + 1} more time(s)`
+            return `${lm} LM, ${vm} VM\nPlay IIDX Lightning ${vm2} more time(s)\n or SDVX Valkyrie ${Math.trunc(vm2 / 10) + 1} more time(s)`
         }
     }
     else // LM not done
@@ -35,7 +35,7 @@ function calc(lm, vm)
         if (vm == 200)
         {
             let lm2 = 200 - lm;
-            return `${lm} LM, ${vm} VM\nPlay IIDX Lightning ${lm2} more time(s)\n or SDVX Valkyrie ${Math.trunc(lm2 / 10) + 1} more time(s)`
+            return `${lm} LM, ${vm} VM\nPlay IIDX Lightning ${Math.trunc(lm2 / 10) + 1} more time(s)\n or SDVX Valkyrie ${lm2} more time(s)`
         }
         else // LM and VM not done
         {
