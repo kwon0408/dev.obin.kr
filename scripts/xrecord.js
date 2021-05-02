@@ -33,6 +33,7 @@ function calc(lm, vm)
         if (lm > vm) // use VM to determine play counts
         {
             let result = calc2(lm, vm);
+            console.log(result);
             if (result == -99)
                 return "Invalid LM/VM values!";
             
@@ -41,6 +42,7 @@ function calc(lm, vm)
         else // use LM to determine play counts
         {
             let result = calc2(lm, vm);
+            console.log(result);
             if (result == -99)
                 return "Invalid LM/VM values!";
             
@@ -52,10 +54,12 @@ function calc(lm, vm)
 
 function calc2(small, big)
 {
+    console.log(`calc2(${small}, ${big})`)
     for (play_s = Math.trunc(small / 10), play_b = small % 10; play_s >= 0; --play_b)
         {
             // recalculate big
             let big2 = play_b * 10 + play_s;
+            console.log(`play_s=${play_s}, play_b=${play_b}`)
             if (big == big2)
                 return [play_s, play_b]
         }
