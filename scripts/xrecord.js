@@ -21,32 +21,42 @@ function calc(lm, vm)
         return "Not started!"
 
     if (lm == 200)
-        var lm_done = true;   
-
-    if (vm == 200)
-        var vm_done = true;
-
-    if (lm_done && vm_done)
-        return "Already Completed!"
-    else
     {
-        if (lm > vm) // use VM to determine play counts
+        if (vm == 200)
+            return "Already Completed!"
+        else // LM done, VM not done
         {
-            let result = calc2(lm, vm);
-            console.log(result);
-            if (result == -99)
-                return "Invalid LM/VM values!";
-            
-            return `${lm} LM, ${vm} VM\nPlay count: IIDX ${result[0]}, SDVX ${result[1]}`
+            let vm2 = 200 - vm;
+            return `${lm} LM, ${vm} VM\nPlay SDVX Valkyrie ${vm2} more time(s)\n or IIDX Lightning ${Math.trunc(vm2 / 10) + 1} more time(s)`
         }
-        else // use LM to determine play counts
+    }
+    else // LM not done
+    {
+        if (vm == 200)
         {
-            let result = calc2(lm, vm);
-            console.log(result);
-            if (result == -99)
-                return "Invalid LM/VM values!";
-            
-            return `${lm} LM, ${vm} VM\nPlay count: IIDX ${result[1]}, SDVX ${result[0]}`
+            let lm2 = 200 - lm;
+            return `${lm} LM, ${vm} VM\nPlay IIDX Lightning ${lm2} more time(s)\n or SDVX Valkyrie ${Math.trunc(lm2 / 10) + 1} more time(s)`
+        }
+        else // LM and VM not done
+        {
+            if (lm > vm) // use VM to determine play counts
+            {
+                let result = calc2(lm, vm);
+                console.log(result);
+                if (result == -99)
+                    return "Invalid LM/VM values!";
+                
+                return `${lm} LM, ${vm} VM\nPlay count: IIDX Lightning ${result[0]}, SDVX Valkyrie ${result[1]}`
+            }
+            else // use LM to determine play counts
+            {
+                let result = calc2(lm, vm);
+                console.log(result);
+                if (result == -99)
+                    return "Invalid LM/VM values!";
+                
+                return `${lm} LM, ${vm} VM\nPlay count: IIDX Lightning ${result[1]}, SDVX Valkyrie ${result[0]}`
+            }
         }
     }
 
